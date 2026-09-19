@@ -1,0 +1,138 @@
+@font-face {
+  font-family: "Bricolage Grotesque:SemiBold";
+  font-style: normal;
+  font-weight: 600;
+  src: url('/fonts/BricolageGrotesque.woff2') format('woff2');
+}
+
+@font-face {
+  font-family: "Bricolage Grotesque:Medium";
+  font-style: normal;
+  font-weight: 500;
+  src: url('/fonts/BricolageGrotesque.woff2') format('woff2');
+}
+
+@font-face {
+  font-family: "Bricolage Grotesque";
+  font-style: normal;
+  font-weight: 100 900;
+  src: url('/fonts/BricolageGrotesque.woff2') format('woff2');
+}
+
+@import 'tailwindcss';
+
+@theme inline {
+  --font-bricolage: "Bricolage Grotesque", sans-serif;
+}
+
+/* ── Reset ─────────────────────────────────────────────── */
+*, *::before, *::after {
+  box-sizing: border-box;
+}
+html, body {
+  margin: 0;
+  padding: 0;
+  overflow-x: hidden;
+}
+body {
+  font-family: "Bricolage Grotesque", sans-serif;
+  -webkit-font-smoothing: antialiased;
+}
+
+/* ── Scrollbar ─────────────────────────────────────────── */
+::-webkit-scrollbar { width: 6px; }
+::-webkit-scrollbar-track { background: transparent; }
+::-webkit-scrollbar-thumb {
+  background: rgba(0,0,0,0.12);
+  border-radius: 99px;
+  opacity: 0;
+  transition: opacity 0.3s;
+}
+:hover::-webkit-scrollbar-thumb { opacity: 1; }
+
+/* ── Typography helper ─────────────────────────────────── */
+.logo-text {
+  font-family: "Bricolage Grotesque:Medium";
+  font-weight: 600;
+  font-variation-settings: "opsz" 96, "wdth" 100;
+  letter-spacing: -0.03em;
+  line-height: 1;
+  color: #111;
+}
+
+/* ── Keyframes ─────────────────────────────────────────── */
+
+@keyframes floatOrb {
+  0%, 100% { transform: translate(0, 0) scale(1); }
+  33%       { transform: translate(12px, -18px) scale(1.04); }
+  66%       { transform: translate(-8px, 10px) scale(0.97); }
+}
+
+@keyframes birdBob {
+  0%, 100% { transform: translateY(0) rotate(0deg); }
+  25%       { transform: translateY(-4px) rotate(-4deg); }
+  75%       { transform: translateY(2px) rotate(3deg); }
+}
+
+@keyframes particlePop {
+  0%   { transform: translate(0, 0) scale(1); opacity: 1; }
+  40%  { transform: translate(var(--px, 20px), var(--py, -40px)) scale(1.2); opacity: 0.9; }
+  100% { transform: translate(calc(var(--px, 20px) * 1.5), calc(var(--py, -40px) * 2)) scale(0); opacity: 0; }
+}
+
+@keyframes streakPop {
+  0%   { transform: translate(-50%, -50%) scale(0.5); opacity: 0; }
+  40%  { transform: translate(-50%, -50%) scale(1.2); opacity: 1; }
+  70%  { transform: translate(-50%, -50%) scale(0.95); opacity: 1; }
+  100% { transform: translate(-50%, -50%) scale(1); opacity: 0; }
+}
+
+@keyframes fadeUp {
+  0%   { opacity: 0; transform: translateY(8px); }
+  100% { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes answerPulse {
+  0%   { transform: scale(0.95); opacity: 0; }
+  60%  { transform: scale(1.02); }
+  100% { transform: scale(1); opacity: 1; }
+}
+
+@keyframes shimmer {
+  0%   { background-position: -200% 0; }
+  100% { background-position: 200% 0; }
+}
+
+@keyframes ping-soft {
+  0%   { transform: scale(1); opacity: 0.6; }
+  80%  { transform: scale(1.8); opacity: 0; }
+  100% { transform: scale(1.8); opacity: 0; }
+}
+
+/* ── Particle positions randomization ─────────────────── */
+.particle:nth-child(1)  { --px: 24px;  --py: -50px; }
+.particle:nth-child(2)  { --px: -30px; --py: -45px; }
+.particle:nth-child(3)  { --px: 40px;  --py: -30px; }
+.particle:nth-child(4)  { --px: -20px; --py: -55px; }
+.particle:nth-child(5)  { --px: 10px;  --py: -60px; }
+.particle:nth-child(6)  { --px: -40px; --py: -25px; }
+.particle:nth-child(7)  { --px: 50px;  --py: -20px; }
+.particle:nth-child(8)  { --px: 15px;  --py: -40px; }
+.particle:nth-child(9)  { --px: -15px; --py: -35px; }
+.particle:nth-child(10) { --px: 35px;  --py: -48px; }
+
+/* ── Hover utilities ───────────────────────────────────── */
+.hover-lift {
+  transition: transform 0.25s cubic-bezier(0.34,1.56,0.64,1), box-shadow 0.25s ease;
+}
+.hover-lift:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 16px 40px rgba(0,0,0,0.15);
+}
+
+/* ── Focus visible ─────────────────────────────────────── */
+button:focus-visible, a:focus-visible {
+  outline: 2px solid #4F46E5;
+  outline-offset: 2px;
+  border-radius: 8px;
+}
